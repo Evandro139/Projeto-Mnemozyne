@@ -1,0 +1,17 @@
+
+.memory-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.card-imagem {
+    width: 500px;
+    height: 200px;
+    background-image: url("../assets/imgs/bg1.png");
+    background-size: cover;
+}
+
+.texto {
+    margin: 20px auto;
+}

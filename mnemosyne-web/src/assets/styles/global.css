@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: "Jost", sans-serif;
+
+    margin: 0;
+    padding: 0;
+
+    color: #464646;
+}
+
+.app-header {
+    height: 80px;
+
+    display: flex; /* POSICIONA ELEMENTOS LADO A LADO*/
+    justify-content: space-between; /*JOGA OS ELEMENTOS PARA OS CANTOS*/
+    align-items: center; /*ALINHA VERTICALMENTE OS ELEMENTOS*/
+
+    padding-left: 80px;
+    padding-right: 80px;
+
+    box-shadow: 0px 2px 4px #464646;
+}
+
+.app-footer {
+    height: 80px;
+
+    display: flex; /* POSICIONA ELEMENTOS LADO A LADO*/
+    justify-content: center; /*JOGA OS ELEMENTOS PARA OS CANTOS*/
+    align-items: center; /*ALINHA VERTICALMENTE OS ELEMENTOS*/
+
+    padding-left: 80px;
+    padding-right: 80px;
+
+    box-shadow: 0px -2px 4px #464646;
+}
+
+.links a{
+    font-size: 30px;
+    text-decoration: none;
+    padding-left: 35px;
+    text-transform: uppercase;
+}
+
+.app-main {
+    padding: 40px 80px;
+}
+
+h1 {
+    font-size: 70px;
+    font-weight: normal;
+    margin-bottom: 40px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
