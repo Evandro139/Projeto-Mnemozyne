@@ -12,14 +12,24 @@ const CriarMemoria = () => {
     const [imagens, setImagens] = useState([]);
     const [alertaVisivel, setAlertaVisivel] = useState(false);
 
-    const adicionarImagem = (event) => {
-        const arquivos = Array.from(event.target.files);
+    const converterParaBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = (error) => reject(error);
+        });
+    };
 
+    const adicionarImagem = async (event) => {
+        const arquivos = Array.from(event.target.files);
         if (arquivos.length > 0) {
-            const novasImagens = arquivos.map((file) => URL.createObjectURL(file));
+            const novasImagens = await Promise.all(arquivos.map(converterParaBase64));
             setImagens((prevImagens) => [...prevImagens, ...novasImagens]);
         }
-    }
+    };
+
+
 
     const Submit = async (event) => {
         event.preventDefault();
@@ -58,23 +68,23 @@ const CriarMemoria = () => {
             <h1>Crie uma memória</h1>
 
             <form className="formulario" onSubmit={Submit}>
-                <label className="lbl-txt" for="titulo">Título</label>
+                <label className="lbl-txt" htmlFor="titulo">Título</label>
                 <input type="text" id="titulo" placeholder="Insira o título aqui"
                 value={titulo}
                 onChange={(e) => setTitulo(e.target.value)}
                 />
 
-                <label className="lbl-txt" for="descricao">Descrição</label>
+                <label className="lbl-txt" htmlFor="descricao">Descrição</label>
                 <textarea id="descricao" placeholder="Insira a descrição aqui"
                 value={descricao}
                 onChange={(e) => setDescricao(e.target.value)}
                 ></textarea>
 
-                <label className="lbl-txt" for="add-imagens">Imagens</label>
+                <label className="lbl-txt" htmlFor="add-imagens">Imagens</label>
                 <input type="file" id="add-imagens" multiple accept="image/*"
                 onChange={adicionarImagem}
                 />
-                <label for="add-imagens" className="add-images">+ Adicionar imagens</label>
+                <label htmlFor="add-imagens" className="add-images">+ Adicionar imagens</label>
 
                 {imagens.length === 0 ? (
                     <p className="nenhum">Nenhuma imagem adicionada no momento.</p>
